@@ -5,7 +5,7 @@ import {createLogger} from 'redux-logger';
 import createActionBuffer from 'redux-action-buffer'
 import {REHYDRATE} from 'redux-persist/constants'
 
-import reducer from 'reducers/index';
+import getRootReducer from 'reducers/index';
 import sagas from 'sagas/index';
 
 const loggerMiddleware = createLogger({
@@ -25,13 +25,12 @@ let enhancer = compose(
   applyMiddleware(...middlewares),
 );
 
-const store = createStore(
-    reducer,
-    {}, // initial state
-    enhancer,
-);
-
-sagaMiddleware.run(sagas)
-
-
-export default store;
+export default function getStore(navReducer){
+  const store = createStore(
+      getRootReducer(navReducer),
+      {}, // initial state
+      enhancer,
+  );
+  sagaMiddleware.run(sagas)
+  return store;
+}

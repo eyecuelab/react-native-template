@@ -18,7 +18,7 @@
 * commonly folks will have a series of switch statements, can get unclean & very literary
 
 ## Renaming
-This project was launched with the name 'Mall'. I haven't tried this but [react-native-rename](https://github.com/junedomingo/react-native-rename) could be a simple way to change the name (although you might have to manually attune the mandatory matching names in AppRegistry (index file) and package.json)
+This project was launched with the name 'Mall'. I haven't tried this but [react-native-rename](https://github.com/junedomingo/react-native-rename) could be a simple way to change the name - although you might have to manually attune the mandatory matching names in AppRegistry (index file) and package.json.
 
 ## Conventions
 
@@ -38,3 +38,4 @@ These would be cool to hash out, there are some good style guides online ([like 
 
 * does all of our state need to be composed of immutable objects?
 * should `lib/styles/` folder be in lib?
+* best way of forking android v. ios?

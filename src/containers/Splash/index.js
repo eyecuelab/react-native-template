@@ -12,6 +12,9 @@ import buttonStyle from 'lib/styles/button'
 import positionerStyle from 'lib/styles/positioner'
 
 class Splash extends Component {
+  static navigationOptions = {
+    header: null,
+  }
   constructor(props){
     super(props);
   }
