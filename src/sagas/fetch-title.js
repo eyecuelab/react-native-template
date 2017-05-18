@@ -1,24 +1,31 @@
-import { takeLatest } from 'redux-saga';
-import { call, put } from 'redux-saga/effects';
+import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
 
-import { FETCH_TITLE } from 'constants/actions';
+import { FETCH_TITLE } from 'lib/constants/actions';
+import Api from 'lib/api';
 import setTitle from 'actions/set-title';
+import { genericError } from 'actions/errors';
 
 const executeFetchTitle = () => {
-  setTimeout(()=>{
-    return 'fetched title'; // TODO make this actually API call
-  }, 500);
+  // let root = 'https://jsonplaceholder.typicode.com';
+  // let data = Api.get(root + '/posts/1').then(()=>{
+  //   console.log('hi');
+  // })
+  // setTimeout(()=>{
+  //   console.log(data);
+  // }, 1000);
+
+  return 'fetched title'; // TODO make this actually API call
 }
 
-function* fetchTitle() {
+function* fetchTitle(action) {
   try {
     const title = yield call(executeFetchTitle);
     yield put(setTitle(title));
   } catch (error) {
-    // opportunity for error handling function
+    yield put(genericError('Failed to Fetch Title'));
   }
 }
 
 export default function* watchFetchTitle() {
-  yield* takeLatest(FETCH_TITLE, fetchTitle);
+  yield takeLatest(FETCH_TITLE, fetchTitle);
 }

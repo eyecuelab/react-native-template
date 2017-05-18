@@ -20,17 +20,17 @@ class Splash extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.getTitle('white')}>{this.props.title}</Text>
-        <View style={positionerStyle.centeringFromBottom(100)}>
+        <View style={positionerStyle.centeringFromBottom('20%')}>
           <TouchableOpacity
             onPress={()=>{
-              this.props.setTitle('dynamically set title');
+              this.props.fetchTitle();
             }}
             style={buttonStyle.default.container}
           >
             <Text
               style={buttonStyle.default.text}
             >
-              Set New Title
+              Fetch New Title
             </Text>
           </TouchableOpacity>
         </View>

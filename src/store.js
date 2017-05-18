@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { AsyncStorage } from 'react-native';
-import sagaMiddleware from 'redux-saga';
+import createSagaMiddleware from 'redux-saga';
 import {createLogger} from 'redux-logger';
 import createActionBuffer from 'redux-action-buffer'
 import {REHYDRATE} from 'redux-persist/constants'
@@ -16,8 +16,10 @@ let middlewares = [];
 
 if (__DEV__ === true) {
   middlewares.push(loggerMiddleware);
-  middlewares.push(sagaMiddleware(sagas));
 }
+
+let sagaMiddleware = createSagaMiddleware();
+middlewares.push(sagaMiddleware);
 
 let enhancer = compose(
   applyMiddleware(...middlewares),
@@ -28,5 +30,8 @@ const store = createStore(
     {}, // initial state
     enhancer,
 );
+
+sagaMiddleware.run(sagas)
+
 
 export default store;

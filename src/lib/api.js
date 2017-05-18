@@ -7,6 +7,21 @@ class Api {
     }
   }
 
+  static keys() {
+    // return {
+    //   appKey: 'abc',
+    //   appUrl: 'https://duospell.herokuapp.com/api/',
+    //   s3Config: {
+    //     keyPrefix: "uploads/",
+    //     bucket: "duospell",
+    //     region: "us-west-2",
+    //     accessKey: "AKIAJJUZKVMA35QOKXUQ",
+    //     secretKey: "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",
+    //     successActionStatus: 201,
+    //   },
+    // }
+  }
+
   static get(route) {
     return this.xhr(route, null, 'GET');
   }

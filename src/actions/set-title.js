@@ -1,4 +1,4 @@
-import { SET_TITLE } from 'constants/actions';
+import { SET_TITLE } from 'lib/constants/actions';
 
 export default (payload) => ({
   type: SET_TITLE,
