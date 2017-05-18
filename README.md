@@ -1,6 +1,5 @@
 # React-Native Template
 
-
 ## Features
 
 * redux (w/ immutable.js)
@@ -18,17 +17,16 @@
 * we create our reducers differently than most
 * commonly folks will have a series of switch statements, can get unclean & very literary
 
-## Style
-
-common styles are kept in their own folder, I think these are cool to try to use a lot. and to use functions in there to make common style patterns dynamically amenable.
-
-## Error handling
-
-Good to standardize/plan from the outset. error actions make this much simpler
+## Renaming
+This project was launched with the name 'Mall'. I haven't tried this but [react-native-rename](https://github.com/junedomingo/react-native-rename) could be a simple way to change the name (although you might have to manually attune the mandatory matching names in AppRegistry (index file) and package.json)
 
 ## Conventions
 
-these would be cool to hash out, there are some good style guides online ([like this one](https://github.com/airbnb/javascript)) that we could consider borrowing from
+These would be cool to hash out, there are some good style guides online ([like this one](https://github.com/airbnb/javascript)) that we could consider borrowing/adapting from. I've tried to set up standard protocol for:
+
+* api calls
+* error handling (see `sagas/fetch-title`)
+* styles (local/global mix, using global properties as functions to make adaptable)
 
 ## Could Add
 

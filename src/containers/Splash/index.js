@@ -30,7 +30,7 @@ class Splash extends Component {
             <Text
               style={buttonStyle.default.text}
             >
-              Fetch New Title
+              Fetch Remote Title
             </Text>
           </TouchableOpacity>
         </View>

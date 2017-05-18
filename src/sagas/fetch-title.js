@@ -20,7 +20,7 @@ function* fetchTitle(action) {
     yield put(setTitle(title));
   } catch (error) {
     console.warn(error);
-    yield put(genericError('Failed to Fetch Title'));
+    yield put(genericError('Failed to fetch Title'));
   }
 }
 
