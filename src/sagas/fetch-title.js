@@ -6,15 +6,12 @@ import setTitle from 'actions/set-title';
 import { genericError } from 'actions/errors';
 
 const executeFetchTitle = () => {
-  // let root = 'https://jsonplaceholder.typicode.com';
-  // let data = Api.get(root + '/posts/1').then(()=>{
-  //   console.log('hi');
-  // })
-  // setTimeout(()=>{
-  //   console.log(data);
-  // }, 1000);
-
-  return 'fetched title'; // TODO make this actually API call
+  let root = 'https://jsonplaceholder.typicode.com';
+  let params = '/posts/1';
+  return Api.get(root + params).then(val => {
+    // console.log(val);
+    return val.title.slice(0, 8);
+  });
 }
 
 function* fetchTitle(action) {
@@ -22,6 +19,7 @@ function* fetchTitle(action) {
     const title = yield call(executeFetchTitle);
     yield put(setTitle(title));
   } catch (error) {
+    console.warn(error);
     yield put(genericError('Failed to Fetch Title'));
   }
 }

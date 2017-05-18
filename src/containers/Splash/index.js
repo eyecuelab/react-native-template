@@ -8,8 +8,8 @@ import { Map } from 'immutable';
 import ActionCreators from 'actions/index'
 
 import styles from 'containers/Splash/styles'
-import buttonStyle from 'styles/button'
-import positionerStyle from 'styles/positioner'
+import buttonStyle from 'lib/styles/button'
+import positionerStyle from 'lib/styles/positioner'
 
 class Splash extends Component {
   constructor(props){
