@@ -1,1 +1,6 @@
-# The Mall
+# React-Native Template
+
+### Architecture
+
+
+### Style
