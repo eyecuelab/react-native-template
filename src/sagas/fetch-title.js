@@ -1,6 +1,6 @@
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
 
-import { FETCH_TITLE } from 'lib/constants/actions';
+import { TITLE_FETCH } from 'lib/constants/actions';
 import Api from 'lib/api';
 import setTitle from 'actions/set-title';
 import { genericError } from 'actions/errors';
@@ -25,5 +25,5 @@ function* fetchTitle(action) {
 }
 
 export default function* watchFetchTitle() {
-  yield takeLatest(FETCH_TITLE, fetchTitle);
+  yield takeLatest(TITLE_FETCH, fetchTitle);
 }

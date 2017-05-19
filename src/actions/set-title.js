@@ -1,6 +1,6 @@
-import { SET_TITLE } from 'lib/constants/actions';
+import { TITLE_SET } from 'lib/constants/actions';
 
 export default (payload) => ({
-  type: SET_TITLE,
+  type: TITLE_SET,
   payload,
 });
