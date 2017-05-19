@@ -13,4 +13,4 @@ const App = () => (
   </Provider>
 )
 
-AppRegistry.registerComponent('Mall', () => App);
+AppRegistry.registerComponent('ReactNativeTemplate', () => App);

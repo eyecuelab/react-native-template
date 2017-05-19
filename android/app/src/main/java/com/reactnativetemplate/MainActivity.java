@@ -1,4 +1,4 @@
-package com.mall;
+package com.reactnativetemplate;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "Mall";
+        return "ReactNativeTemplate";
     }
 }
