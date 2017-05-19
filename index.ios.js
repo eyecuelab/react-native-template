@@ -1,41 +1,15 @@
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
-import { Provider, connect } from 'react-redux';
-import { StackNavigator, addNavigationHelpers } from "react-navigation";
+import { Provider } from 'react-redux';
 
 import getStore from 'store';
-import routes from 'routes';
+import navigator from 'navigator';
 
-const AppNavigator = StackNavigator(routes);
-
-const navReducer = (state, action) => {
-    const newState = AppNavigator.router.getStateForAction(action, state);
-    return newState || state;
-};
-
-function mapNavToProps(store) {
-  return store;
-}
-
-class AppWithoutNavigationState extends Component {
-    render() {
-      console.log(this.props);
-        return (
-            <AppNavigator
-                navigation={addNavigationHelpers({
-                    dispatch: this.props.dispatch,
-                    state: this.props.nav
-                })}
-            />
-        );
-    }
-}
-
-const AppWithNavigationState = connect(mapNavToProps)(AppWithoutNavigationState);
+const { navReducer, AppWithNavigationState } = navigator;
 
 const App = () => (
   <Provider store={getStore(navReducer)}>
-    <AppWithNavigationState />
+    <AppWithNavigationState/>
   </Provider>
 )
 

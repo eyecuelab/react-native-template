@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Platform } from 'react-native';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
 
 
 import ActionCreators from 'actions/index'
-
-import styles from 'containers/Splash/styles'
-import buttonStyle from 'lib/styles/button'
 import positionerStyle from 'lib/styles/positioner'
+import styles from 'containers/Splash/styles'
+import Button from 'components/Button/index'
 
 class Splash extends Component {
-  static navigationOptions = {
-    header: null,
-  }
   constructor(props){
     super(props);
   }
@@ -24,18 +20,13 @@ class Splash extends Component {
       <View style={styles.container}>
         <Text style={styles.getTitle('white')}>{this.props.title}</Text>
         <View style={positionerStyle.centeringFromBottom('20%')}>
-          <TouchableOpacity
+          <Button
+            text={'Fetch Remote Title'}
+            type={'default'}
             onPress={()=>{
               this.props.fetchTitle();
             }}
-            style={buttonStyle.default.container}
-          >
-            <Text
-              style={buttonStyle.default.text}
-            >
-              Fetch Remote Title
-            </Text>
-          </TouchableOpacity>
+          />
         </View>
       </View>
     )

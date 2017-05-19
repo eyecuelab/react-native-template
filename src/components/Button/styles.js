@@ -15,10 +15,5 @@ export default {
     text: {
       color: colors.secondary,
     },
-    setDimens: function(height, width){
-      return { height, width };
-    },
-  }
-
-
+  },
 }

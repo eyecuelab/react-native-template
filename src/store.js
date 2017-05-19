@@ -28,7 +28,7 @@ let enhancer = compose(
 export default function getStore(navReducer){
   const store = createStore(
       getRootReducer(navReducer),
-      {}, // initial state
+      {},                           // initial state
       enhancer,
   );
   sagaMiddleware.run(sagas)
