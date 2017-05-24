@@ -1,10 +1,10 @@
 class Api {
   static headers() {
     return {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'dataType': 'json',
-    }
+      Accept: 'application/json',
+      ContentType: 'application/json',
+      dataType: 'json',
+    };
   }
 
   static keys() {
@@ -27,25 +27,25 @@ class Api {
   }
 
   static put(route, params) {
-    return this.xhr(route, params, 'PUT')
+    return this.xhr(route, params, 'PUT');
   }
 
   static post(route, params) {
-    return this.xhr(route, params, 'POST')
+    return this.xhr(route, params, 'POST');
   }
 
   static delete(route, params) {
-    return this.xhr(route, params, 'DELETE')
+    return this.xhr(route, params, 'DELETE');
   }
 
   static xhr(route, params, verb) {
-    let options = Object.assign({ method: verb }, params ? { body: JSON.stringify(params) } : null );
-    options.headers = Api.headers()
-    return fetch(route, options).then( resp => {
-      let json = resp.json()
-      return json;
-    })
+    const options = Object.assign({ method: verb },
+      params ? { body: JSON.stringify(params) }
+      : null,
+    );
+    options.headers = Api.headers();
+    return fetch(route, options).then(resp => resp.json());
   }
 }
 
-export default Api
+export default Api;

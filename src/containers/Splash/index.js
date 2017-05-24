@@ -8,22 +8,18 @@ import PropTypes from 'prop-types';
 
 import ActionCreators from 'actions/index';
 import positionerStyle from 'lib/styles/positioner';
-import { styles, dynamicStyles } from 'containers/Splash/styles';
+import { staticStyles, dynamicStyles } from 'containers/Splash/styles';
 import Button from 'components/Button/index';
 
-class Splash extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+export class Splash extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View style={staticStyles.container}>
         <Text style={dynamicStyles.getTitle('white')}>{this.props.title}</Text>
         <View style={positionerStyle.centeringFromBottom('20%')}>
           <Button
             text={'Fetch Remote Title'}
-            type={'default'}
+            type={'standard'}
             onPress={() => {
               this.props.fetchTitle();
             }}
@@ -34,15 +30,15 @@ class Splash extends Component {
   }
 }
 
-// Splash.defaultProps = {
-//   fetchTitle: () => {},
-//   title: '',
-// };
-//
-// Splash.propTypes = {
-//   fetchTitle: PropTypes.function.isRequired,
-//   title: PropTypes.string.isRequired,
-// };
+Splash.defaultProps = {
+  fetchTitle: () => {},
+  title: '',
+};
+
+Splash.propTypes = {
+  fetchTitle: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+};
 
 
 function mapDispatchToProps(dispatch) {

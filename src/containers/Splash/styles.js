@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import colors from 'lib/colors';
 
-const styles = StyleSheet.create({
+const staticStyles = StyleSheet.create({
   container: {
     backgroundColor: colors.black,
     flex: 1,
@@ -13,12 +13,12 @@ const styles = StyleSheet.create({
 
 
 const dynamicStyles = {
-  getTitle: (_color) => (
+  getTitle: color => (
     {
-      color: colors[_color],
+      color: colors[color],
       fontSize: 25,
     }
   ),
 };
 
-export { styles, dynamicStyles };
+export { staticStyles, dynamicStyles };

@@ -1,18 +1,18 @@
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { TITLE_FETCH } from 'lib/constants/actions';
-import Api from 'lib/api';
+import Api from 'lib/Api';
 import setTitle from 'actions/set-title';
 import { genericError } from 'actions/errors';
 
 const executeFetchTitle = () => {
-  let root = 'https://jsonplaceholder.typicode.com';
-  let params = '/posts/1';
-  return Api.get(root + params).then(val => {
-    // console.log(val);
+  const root = 'https://jsonplaceholder.typicode.com';
+  const params = '/posts/1';
+  return Api.get(root + params).then((val) => {
+    console.log(val);
     return val.title.slice(0, 8);
   });
-}
+};
 
 function* fetchTitle(action) {
   try {

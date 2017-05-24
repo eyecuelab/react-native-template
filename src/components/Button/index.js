@@ -20,6 +20,7 @@ const Button = (props) => {
 };
 
 Button.defaultProps = {
+  type: 'standard',
   onPress: () => {},
   text: '',
 };
