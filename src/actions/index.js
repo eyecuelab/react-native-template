@@ -6,6 +6,6 @@ const ActionCreators = {
   setTitle,
   fetchTitle,
   genericError,
-}
+};
 
 export default ActionCreators;

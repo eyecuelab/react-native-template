@@ -1,8 +1,5 @@
 export default {
-  centeringFromBottom: function(bottom){
-    if (!bottom) {
-      bottom = 0;
-    }
+  centeringFromBottom(bottom = 0) {
     return {
       position: 'absolute',
       left: 0,
@@ -10,6 +7,6 @@ export default {
       bottom,
       alignItems: 'center',
       justifyContent: 'center',
-    }
+    };
   },
-}
+};

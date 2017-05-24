@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { StackNavigator, addNavigationHelpers } from "react-navigation";
+import { StackNavigator, addNavigationHelpers } from 'react-navigation';
 
 import Splash from 'containers/Splash';
 import routesNames from 'lib/constants/routes';
@@ -18,14 +18,14 @@ const AppNavigator = StackNavigator(routes);
 
 class AppWithoutNavigationState extends Component {
   render() {
-      return (
-        <AppNavigator
-          navigation={addNavigationHelpers({
-            dispatch: this.props.dispatch,
-            state: this.props.nav,
-          })}
-        />
-      );
+    return (
+      <AppNavigator
+        navigation={addNavigationHelpers({
+          dispatch: this.props.dispatch,
+          state: this.props.nav,
+        })}
+      />
+    );
   }
 }
 
@@ -36,8 +36,8 @@ function mapNavToProps(store) {
 const AppWithNavigationState = connect(mapNavToProps)(AppWithoutNavigationState);
 
 const navReducer = (state, action) => {
-    const newState = AppNavigator.router.getStateForAction(action, state);
-    return newState || state;
+  const newState = AppNavigator.router.getStateForAction(action, state);
+  return newState || state;
 };
 
-export default { AppWithNavigationState, navReducer};
+export default { AppWithNavigationState, navReducer };

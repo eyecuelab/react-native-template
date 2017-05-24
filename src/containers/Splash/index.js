@@ -1,38 +1,48 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Platform } from 'react-native';
-import { bindActionCreators } from 'redux'
+import { View, Text, Platform } from 'react-native';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
+import PropTypes from 'prop-types';
 
 
-import ActionCreators from 'actions/index'
-import positionerStyle from 'lib/styles/positioner'
-import styles from 'containers/Splash/styles'
-import Button from 'components/Button/index'
+import ActionCreators from 'actions/index';
+import positionerStyle from 'lib/styles/positioner';
+import { styles, dynamicStyles } from 'containers/Splash/styles';
+import Button from 'components/Button/index';
 
 class Splash extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
-  render(){
+  render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.getTitle('white')}>{this.props.title}</Text>
+        <Text style={dynamicStyles.getTitle('white')}>{this.props.title}</Text>
         <View style={positionerStyle.centeringFromBottom('20%')}>
           <Button
             text={'Fetch Remote Title'}
             type={'default'}
-            onPress={()=>{
+            onPress={() => {
               this.props.fetchTitle();
             }}
           />
         </View>
       </View>
-    )
+    );
   }
 }
 
+// Splash.defaultProps = {
+//   fetchTitle: () => {},
+//   title: '',
+// };
+//
+// Splash.propTypes = {
+//   fetchTitle: PropTypes.function.isRequired,
+//   title: PropTypes.string.isRequired,
+// };
 
 
 function mapDispatchToProps(dispatch) {
@@ -40,7 +50,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(store) {
-  return {title: store.title.get('title')};
+  return { title: store.title.get('title') };
 }
 
 

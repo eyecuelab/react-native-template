@@ -3,4 +3,4 @@ export default {
   white: '#fff',
   primary: '#8bb',
   secondary: '#bb8', // :D
-}
+};

@@ -1,20 +1,33 @@
-import React, { Component } from 'react'
-import { TouchableOpacity, Text } from 'react-native'
-import styles from 'components/Button/styles'
+import React from 'react';
+import { TouchableOpacity, Text } from 'react-native';
+import PropTypes from 'prop-types';
 
-export default class Button extends Component {
-  render(){
-    return(
-      <TouchableOpacity
-        onPress={this.props.onPress}
-        style={styles[this.props.type].container}
-      >
-        <Text
-          style={styles[this.props.type].text}
-        >
-          {this.props.text}
-        </Text>
-      </TouchableOpacity>
-    )
-  }
-}
+import styles from './styles';
+
+const Button = (props) => {
+  const style = styles[props.type];
+
+  return (
+    <TouchableOpacity
+      onPress={props.onPress}
+      style={style.container}
+    >
+      <Text style={style.text}>
+        {props.text}
+      </Text>
+    </TouchableOpacity>
+  );
+};
+
+Button.defaultProps = {
+  onPress: () => {},
+  text: '',
+};
+
+Button.propTypes = {
+  onPress: PropTypes.func,
+  text: PropTypes.string,
+  type: PropTypes.string.isRequired,
+};
+
+export default Button;

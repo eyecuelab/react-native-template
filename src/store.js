@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { AsyncStorage } from 'react-native';
 import createSagaMiddleware from 'redux-saga';
-import {createLogger} from 'redux-logger';
+import { createLogger } from 'redux-logger';
 import createActionBuffer from 'redux-action-buffer'
-import {REHYDRATE} from 'redux-persist/constants'
+import { REHYDRATE } from 'redux-persist/constants'
 
 import getRootReducer from 'reducers/index';
 import sagas from 'sagas/index';
