@@ -1,11 +1,15 @@
 import { Map } from 'immutable';
 
-import createReducer from 'lib/helpers/createReducer'
-import { TITLE_SET } from 'lib/constants/actions'
+import createReducer from 'lib/helpers/createReducer';
+import { TITLE_SET } from 'lib/constants/actions';
 
-export default createReducer(state = Map().set('title', 'title from default state'), {
+
+const defaultState = Map().set('title', 'title from default state');
+
+export default createReducer(defaultState, {
 
   [TITLE_SET](state, action) {
+    console.log(state);
     return state.set('title', action.payload);
   },
 
