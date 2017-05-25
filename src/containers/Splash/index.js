@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import { View, Text, Platform } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Map } from 'immutable';
 import PropTypes from 'prop-types';
 
 
 import ActionCreators from 'actions/index';
 import getTitle from 'selectors/title';
 import positionerStyle from 'lib/styles/positioner';
-import { staticStyles, dynamicStyles } from 'containers/Splash/styles';
 import Button from 'components/Button/index';
+import { staticStyles, dynamicStyles } from './styles';
 
 export class Splash extends Component {
   render() {
@@ -46,8 +45,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(ActionCreators, dispatch);
 }
 
-function mapStateToProps(state) {
-  return { title: getTitle(state) };
+function mapStateToProps(store) {
+  return { title: getTitle(store) };
 }
 
 
