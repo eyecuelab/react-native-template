@@ -9,7 +9,6 @@ const defaultState = Map().set('title', 'title from default state');
 export default createReducer(defaultState, {
 
   [TITLE_SET](state, action) {
-    console.log(state);
     return state.set('title', action.payload);
   },
 

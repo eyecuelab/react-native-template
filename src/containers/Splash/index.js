@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
 
 import ActionCreators from 'actions/index';
+import getTitle from 'selectors/title';
 import positionerStyle from 'lib/styles/positioner';
 import { staticStyles, dynamicStyles } from 'containers/Splash/styles';
 import Button from 'components/Button/index';
@@ -45,8 +46,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(ActionCreators, dispatch);
 }
 
-function mapStateToProps(store) {
-  return { title: store.title.get('title') };
+function mapStateToProps(state) {
+  return { title: getTitle(state) };
 }
 
 
