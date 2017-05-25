@@ -1,10 +1,12 @@
-import setTitle from 'actions/set-title';
-import fetchTitle from 'actions/fetch-title';
-import { genericError } from 'actions/errors';
+import setTitle from './set-title';
+import fetchTitle from './fetch-title';
+import setConnectivity from './set-connectivity';
+import { genericError } from './errors';
 
 const ActionCreators = {
   setTitle,
   fetchTitle,
+  setConnectivity,
   genericError,
 };
 

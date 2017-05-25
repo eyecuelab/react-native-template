@@ -17,6 +17,7 @@
     "react-redux": "^5.0.4",
     "redux": "^3.3.1",
     "redux-action-buffer": "^1.0.1",
+    "redux-beacon": "^0.3.0",
     "redux-immutablejs": "0.0.8",
     "redux-logger": "^3.0.6",
     "redux-persist": "^4.8.0",

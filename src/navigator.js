@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { StackNavigator, addNavigationHelpers } from 'react-navigation';
 
@@ -16,18 +16,14 @@ const routes = {
 
 const AppNavigator = StackNavigator(routes);
 
-class AppWithoutNavigationState extends Component {
-  render() {
-    return (
-      <AppNavigator
-        navigation={addNavigationHelpers({
-          dispatch: this.props.dispatch,
-          state: this.props.nav,
-        })}
-      />
-    );
-  }
-}
+const AppWithoutNavigationState = props => (
+  <AppNavigator
+    navigation={addNavigationHelpers({
+      dispatch: props.dispatch,
+      state: props.nav,
+    })}
+  />
+);
 
 function mapNavToProps(store) {
   return store;

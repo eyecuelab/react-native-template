@@ -1,16 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { AppRegistry } from 'react-native';
-import { Provider } from 'react-redux';
 
-import getStore from './src/store';
-import navigator from './src/navigator';
+import App from './src/App';
 
-const { navReducer, AppWithNavigationState } = navigator;
+const ReactNativeTemplate = () => (
+  <App />
+);
 
-const App = () => (
-  <Provider store={getStore(navReducer)}>
-    <AppWithNavigationState/>
-  </Provider>
-)
-
-AppRegistry.registerComponent('ReactNativeTemplate', () => App);
+AppRegistry.registerComponent('ReactNativeTemplate', () => ReactNativeTemplate);
