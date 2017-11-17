@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NetInfo } from 'react-native';
+import { NetInfo, StatusBar, View } from 'react-native';
 import { Provider, connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
@@ -25,7 +25,10 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={this.props.store}>
-        <AppWithNavigationState />
+        <View style={{ paddingTop: 20, flex: 1, alignSelf: 'stretch' }}>
+          <StatusBar statusBarHidden={true} />
+          <AppWithNavigationState />
+        </View>
       </Provider>
     );
   }

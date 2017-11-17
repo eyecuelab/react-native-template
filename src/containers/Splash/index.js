@@ -1,29 +1,64 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StatusBar } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-
 import ActionCreators from 'actions/index';
 import getTitle from 'selectors/title';
 import positionerStyle from 'lib/styles/positioner';
-import Button from 'components/Button/index';
-import { staticStyles, dynamicStyles } from './styles';
+import generateRandomColor from 'lib/helpers/generateRandomColor';
+import shuffleArray from 'lib/helpers/shuffleArray';
+import Button from 'components/Button';
+import Card from 'components/Card';
+import { styles, dynamicStyles } from './styles';
 
 export class Splash extends Component {
+  constructor(props) {
+    super(props);
+    this._cardsCount = 16;
+    const cards = this.generateCards();
+    this.state = {
+      cards,
+    }
+  }
+
+  generateCardsWithNewCount = () => {
+    const margin = 8;
+    this._cardsCount = 16 + ((Math.floor(Math.random() * margin)) - (margin / 2));
+    // we directly manipulate class property without having to worry about forcing repaint as we would w/ state change
+    if (this._cardsCount % 2 !== 0) this._cardsCount += 1;
+    // no need for state change until new card generation anyways
+    const cards = this.generateCards();
+    this.setState({ cards });
+  }
+
+  generateCards() {
+    const cards = [];
+    for (let i = 0; i < (this._cardsCount / 2); i++) {
+      const newColor = generateRandomColor();
+      cards.push(newColor, newColor);
+    }
+    return shuffleArray(cards);
+  }
+
   render() {
     return (
-      <View style={staticStyles.container}>
-        <Text style={dynamicStyles.getTitle('white')}>{this.props.title}</Text>
-        <View style={positionerStyle.centeringFromBottom('20%')}>
-          <Button
-            text={'Fetch Remote Title'}
-            type={'standard'}
-            onPress={() => {
-              this.props.fetchTitle();
-            }}
-          />
+      <View style={styles.container}>
+        <Button
+          text={'Generate Random # of Cards'}
+          type={'standard'}
+          onPress={this.generateCardsWithNewCount}
+        />
+        <View style={styles.cardsContainer}>
+          {this.state.cards.map((cardColor, index) => (
+            <View
+              key={`${cardColor} + ${index}`}
+              style={styles.cardWrapper}
+            >
+              <Card color={cardColor} />
+            </View>
+          ))}
         </View>
       </View>
     );
@@ -51,3 +86,15 @@ function mapStateToProps(store) {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Splash);
+
+
+// <Text style={dynamicStyles.getTitle('white')}>{this.props.title}</Text>
+// <View style={positionerStyle.centeringFromBottom('20%')}>
+//   <Button
+//     text={'Fetch Remote Title'}
+//     type={'standard'}
+//     onPress={() => {
+//       this.props.fetchTitle();
+//     }}
+//   />
+// </View>
