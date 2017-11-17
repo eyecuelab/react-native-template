@@ -9,8 +9,11 @@ import getTitle from 'selectors/title';
 import positionerStyle from 'lib/styles/positioner';
 import generateRandomColor from 'lib/helpers/generateRandomColor';
 import shuffleArray from 'lib/helpers/shuffleArray';
+
 import Button from 'components/Button';
-import Card from 'components/Card';
+import ColorCard from 'components/ColorCard';
+import makeCard from 'hoc/makeCard';
+
 import { styles, dynamicStyles } from './styles';
 
 export class Splash extends Component {
@@ -51,14 +54,16 @@ export class Splash extends Component {
           onPress={this.generateCardsWithNewCount}
         />
         <View style={styles.cardsContainer}>
-          {this.state.cards.map((cardColor, index) => (
-            <View
-              key={`${cardColor} + ${index}`}
-              style={styles.cardWrapper}
-            >
-              <Card color={cardColor} />
-            </View>
-          ))}
+          {this.state.cards.map((cardColor, index) => {
+            return (
+              <View
+                key={`${cardColor} + ${index}`}
+                style={styles.cardWrapper}
+              >
+                <ColorCard color={cardColor} />
+              </View>
+            )
+          })}
         </View>
       </View>
     );
@@ -83,7 +88,6 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(store) {
   return { title: getTitle(store) };
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Splash);
 

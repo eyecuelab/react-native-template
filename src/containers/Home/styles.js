@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cardWrapper: {
-    margin: 15,
+    margin: 12,
   },
 });
 
