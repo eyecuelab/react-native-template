@@ -27,6 +27,7 @@ const AppWithoutNavigationState = props => (
 
 function mapNavToProps(store) {
   return store;
+  
 }
 
 const AppWithNavigationState = connect(mapNavToProps)(AppWithoutNavigationState);

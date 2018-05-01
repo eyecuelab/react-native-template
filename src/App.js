@@ -8,6 +8,8 @@ import getStore from 'store';
 import navigator from 'navigator';
 import ActionCreators from 'actions/index';
 
+import Splash from 'containers/Splash';
+
 const { navReducer, AppWithNavigationState } = navigator;
 
 export default class App extends Component {
@@ -25,7 +27,7 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={this.props.store}>
-        <AppWithNavigationState />
+        <Splash />
       </Provider>
     );
   }
